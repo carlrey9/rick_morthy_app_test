@@ -4,6 +4,6 @@ import 'package:rick_and_morthy_app_test/src/domain/providers/characters_state_n
 import '../../data/providers/rick_morthy_api_provider.dart';
 
 final charactersProvider =
-    StateNotifierProvider<CharactersNotifier, AsyncValue<dynamic>>((ref) {
+    StateNotifierProvider<CharactersNotifier, AsyncValue<String>>((ref) {
   return CharactersNotifier(ref.watch(rickMorthyRepository));
 });

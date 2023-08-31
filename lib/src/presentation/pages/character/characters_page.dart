@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rick_and_morthy_app_test/src/data/providers/rick_morthy_api_provider.dart';
 import 'package:rick_and_morthy_app_test/src/domain/providers/characters_notifier.dart';
@@ -6,8 +7,25 @@ import 'package:rick_and_morthy_app_test/src/presentation/widgets/loading_widget
 
 import '../../widgets/err_widget.dart';
 
-class CharactersPage extends StatelessWidget {
+class CharactersPage extends ConsumerStatefulWidget {
   const CharactersPage({super.key});
+
+  @override
+  CharactersPageState createState() => CharactersPageState();
+}
+
+class CharactersPageState extends ConsumerState<CharactersPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    SchedulerBinding.instance
+        .addPostFrameCallback((_) async => await _getCharacters());
+  }
+
+  Future<void> _getCharacters() async {
+    await ref.read(charactersProvider.notifier).getCharacters();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,21 +46,24 @@ class _BodyCharacters extends ConsumerWidget {
     final characters = ref.watch(charactersProvider);
 
     return characters.when(
-      data: ((data) => Center(
+      data: ((data) {
+        print(data.toString());
+        return Center(
             child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return Column(children: [
-                  CharacterWidget(
-                    isAlive: true,
-                    nameCharacter: "morthy",
-                    urlImage: "http://www.sdfsdf.jpg",
-                  ),
-                  Divider(),
-                ]);
-              },
-            ),
-          )),
+          itemCount: 10,
+          itemBuilder: (BuildContext context, int index) {
+            return Column(children: [
+              CharacterWidget(
+                isAlive: true,
+                nameCharacter: "morthy",
+                urlImage:
+                    "https://rickandmortyapi.com/api/character/avatar/12.jpeg",
+              ),
+              Divider(),
+            ]);
+          },
+        ));
+      }),
       error: (error, skt) => ErrWidget(error: error.toString()),
       loading: () => Center(child: const LoadingWidget()),
     );
