@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
-class CharactersPage extends StatelessWidget {
-  const CharactersPage({super.key});
+class LocationsPage extends StatelessWidget {
+  const LocationsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Characters")),
+      appBar: AppBar(title: Text("Locations")),
       body: Center(
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
             return Column(children: [
-              CharacterWidget(
-                isAlive: true,
-                nameCharacter: "morthy",
-                urlImage: "http://www.sdfsdf.jpg",
+              LocationWidget(
+                locationName: "La Tierra",
+                type: "good",
               ),
               Divider(),
             ]);
@@ -26,15 +25,13 @@ class CharactersPage extends StatelessWidget {
   }
 }
 
-class CharacterWidget extends StatelessWidget {
-  String nameCharacter;
-  String urlImage;
-  bool isAlive;
+class LocationWidget extends StatelessWidget {
+  String locationName;
+  String type;
 
-  CharacterWidget({
-    required this.nameCharacter,
-    required this.urlImage,
-    required this.isAlive,
+  LocationWidget({
+    required this.locationName,
+    required this.type,
     super.key,
   });
 
@@ -42,12 +39,9 @@ class CharacterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 20),
-      height: MediaQuery.of(context).size.height * 0.5,
-      color: Colors.green,
+      height: MediaQuery.of(context).size.height * 0.2,
+      color: Colors.amber,
       child: Stack(children: [
-        Image(
-          image: NetworkImage(urlImage),
-        ),
         Positioned(
           bottom: 0,
           left: 0,
@@ -57,8 +51,8 @@ class CharacterWidget extends StatelessWidget {
             color: Colors.black.withOpacity(0.2),
             child: Column(
               children: [
-                Text(nameCharacter),
-                Text(isAlive ? "Alive" : "Death")
+                Text(locationName),
+                Text(type),
               ],
             ),
           ),
