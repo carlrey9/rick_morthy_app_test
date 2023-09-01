@@ -13,6 +13,7 @@ class CharacterModel with _$CharacterModel {
       required String species,
       required CharacterAdditionalInfoModel origin,
       required CharacterAdditionalInfoModel location,
+      required List<String> episode,
       @Default("") String type,
       required String gender,
       required String image,

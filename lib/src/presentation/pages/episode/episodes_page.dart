@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rick_and_morthy_app_test/src/domain/models/episode/episode_model.dart';
 import 'package:rick_and_morthy_app_test/src/domain/providers/rick_morthy_providers.dart';
 import 'package:rick_and_morthy_app_test/src/presentation/widgets/loading_widget.dart';
@@ -59,34 +60,39 @@ class EpisodeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.15,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.green,
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width * 0.2,
-            child: Text(episodeModel.episode,
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold)),
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.05,
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width * 0.6,
-            child: Text(episodeModel.name,
-                style: TextStyle(fontSize: 20, color: Colors.black)),
-          )
-        ],
+    return InkWell(
+      onTap: () {
+        context.pushNamed('detail_episodes', extra: episodeModel);
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height * 0.15,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.green,
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.2,
+              child: Text(episodeModel.episode,
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold)),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.05,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.6,
+              child: Text(episodeModel.name,
+                  style: TextStyle(fontSize: 20, color: Colors.black)),
+            )
+          ],
+        ),
       ),
     );
   }

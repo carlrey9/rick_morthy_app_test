@@ -37,9 +37,9 @@ class _BodyCharacters extends ConsumerWidget {
           itemBuilder: (BuildContext context, int index) {
             return Column(children: [
               CharacterWidget(characterModel: data[index]),
-              SizedBox(height: 50),
+              SizedBox(height: 25),
               Divider(),
-              SizedBox(height: 50)
+              SizedBox(height: 25)
             ]);
           },
         ));
@@ -65,38 +65,48 @@ class CharacterWidget extends StatelessWidget {
         context.pushNamed('detail_character', extra: characterModel);
       },
       child: Container(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height * 0.5,
-        child: Stack(children: [
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Image(
-              image: NetworkImage(
-                characterModel.image,
+        margin: EdgeInsets.symmetric(horizontal: 10),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.4,
+            child: Stack(children: [
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Hero(
+                  tag: characterModel.image,
+                  child: Image(
+                    image: NetworkImage(
+                      characterModel.image,
+                    ),
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ),
-              fit: BoxFit.fill,
-            ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  color: Colors.black.withOpacity(0.5),
+                  child: Column(
+                    children: [
+                      Text(characterModel.name,
+                          style: TextStyle(fontSize: 24, color: Colors.white)),
+                      Text(characterModel.status,
+                          style: TextStyle(fontSize: 20, color: Colors.white))
+                    ],
+                  ),
+                ),
+              )
+            ]),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              color: Colors.black.withOpacity(0.5),
-              child: Column(
-                children: [
-                  Text(characterModel.name,
-                      style: TextStyle(fontSize: 24, color: Colors.white)),
-                  Text(characterModel.status,
-                      style: TextStyle(fontSize: 20, color: Colors.white))
-                ],
-              ),
-            ),
-          )
-        ]),
+        ),
       ),
     );
   }

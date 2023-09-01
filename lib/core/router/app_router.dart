@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:rick_and_morthy_app_test/src/domain/models/character/character_model.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/episode/episode_model.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/location/location_model.dart';
 import 'package:rick_and_morthy_app_test/src/presentation/pages/character/characters_page.dart';
 import 'package:rick_and_morthy_app_test/src/presentation/pages/episode/episodes_page.dart';
 import 'package:rick_and_morthy_app_test/src/presentation/pages/home_page.dart';
@@ -33,7 +35,8 @@ GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/detail_location',
-      builder: (context, state) => const DetailLocationPage(),
+      builder: (context, state) =>
+          DetailLocationPage(locationModel: state.extra as LocationModel),
       name: "detail_location",
     ),
     GoRoute(
@@ -44,7 +47,8 @@ GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/detail_episodes',
-      builder: (context, state) => const DetailEpisodePage(),
+      builder: (context, state) =>
+          DetailEpisodePage(episodeModel: state.extra as EpisodeModel),
       name: "detail_episodes",
     ),
   ],

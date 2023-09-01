@@ -27,6 +27,7 @@ mixin _$CharacterModel {
   CharacterAdditionalInfoModel get origin => throw _privateConstructorUsedError;
   CharacterAdditionalInfoModel get location =>
       throw _privateConstructorUsedError;
+  List<String> get episode => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
   String get image => throw _privateConstructorUsedError;
@@ -52,6 +53,7 @@ abstract class $CharacterModelCopyWith<$Res> {
       String species,
       CharacterAdditionalInfoModel origin,
       CharacterAdditionalInfoModel location,
+      List<String> episode,
       String type,
       String gender,
       String image,
@@ -81,6 +83,7 @@ class _$CharacterModelCopyWithImpl<$Res, $Val extends CharacterModel>
     Object? species = null,
     Object? origin = null,
     Object? location = null,
+    Object? episode = null,
     Object? type = null,
     Object? gender = null,
     Object? image = null,
@@ -112,6 +115,10 @@ class _$CharacterModelCopyWithImpl<$Res, $Val extends CharacterModel>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as CharacterAdditionalInfoModel,
+      episode: null == episode
+          ? _value.episode
+          : episode // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -168,6 +175,7 @@ abstract class _$$_CharacterModelCopyWith<$Res>
       String species,
       CharacterAdditionalInfoModel origin,
       CharacterAdditionalInfoModel location,
+      List<String> episode,
       String type,
       String gender,
       String image,
@@ -197,6 +205,7 @@ class __$$_CharacterModelCopyWithImpl<$Res>
     Object? species = null,
     Object? origin = null,
     Object? location = null,
+    Object? episode = null,
     Object? type = null,
     Object? gender = null,
     Object? image = null,
@@ -228,6 +237,10 @@ class __$$_CharacterModelCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as CharacterAdditionalInfoModel,
+      episode: null == episode
+          ? _value._episode
+          : episode // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -262,11 +275,13 @@ class _$_CharacterModel implements _CharacterModel {
       required this.species,
       required this.origin,
       required this.location,
+      required final List<String> episode,
       this.type = "",
       required this.gender,
       required this.image,
       required this.url,
-      required this.created});
+      required this.created})
+      : _episode = episode;
 
   factory _$_CharacterModel.fromJson(Map<String, dynamic> json) =>
       _$$_CharacterModelFromJson(json);
@@ -283,6 +298,14 @@ class _$_CharacterModel implements _CharacterModel {
   final CharacterAdditionalInfoModel origin;
   @override
   final CharacterAdditionalInfoModel location;
+  final List<String> _episode;
+  @override
+  List<String> get episode {
+    if (_episode is EqualUnmodifiableListView) return _episode;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_episode);
+  }
+
   @override
   @JsonKey()
   final String type;
@@ -297,7 +320,7 @@ class _$_CharacterModel implements _CharacterModel {
 
   @override
   String toString() {
-    return 'CharacterModel(id: $id, name: $name, status: $status, species: $species, origin: $origin, location: $location, type: $type, gender: $gender, image: $image, url: $url, created: $created)';
+    return 'CharacterModel(id: $id, name: $name, status: $status, species: $species, origin: $origin, location: $location, episode: $episode, type: $type, gender: $gender, image: $image, url: $url, created: $created)';
   }
 
   @override
@@ -312,6 +335,7 @@ class _$_CharacterModel implements _CharacterModel {
             (identical(other.origin, origin) || other.origin == origin) &&
             (identical(other.location, location) ||
                 other.location == location) &&
+            const DeepCollectionEquality().equals(other._episode, _episode) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.image, image) || other.image == image) &&
@@ -321,8 +345,20 @@ class _$_CharacterModel implements _CharacterModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, status, species,
-      origin, location, type, gender, image, url, created);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      status,
+      species,
+      origin,
+      location,
+      const DeepCollectionEquality().hash(_episode),
+      type,
+      gender,
+      image,
+      url,
+      created);
 
   @JsonKey(ignore: true)
   @override
@@ -346,6 +382,7 @@ abstract class _CharacterModel implements CharacterModel {
       required final String species,
       required final CharacterAdditionalInfoModel origin,
       required final CharacterAdditionalInfoModel location,
+      required final List<String> episode,
       final String type,
       required final String gender,
       required final String image,
@@ -367,6 +404,8 @@ abstract class _CharacterModel implements CharacterModel {
   CharacterAdditionalInfoModel get origin;
   @override
   CharacterAdditionalInfoModel get location;
+  @override
+  List<String> get episode;
   @override
   String get type;
   @override
