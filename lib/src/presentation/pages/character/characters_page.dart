@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rick_and_morthy_app_test/src/data/providers/rick_morthy_api_provider.dart';
-import 'package:rick_and_morthy_app_test/src/domain/models/character_model.dart';
+import 'package:go_router/go_router.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/character/character_model.dart';
+
 import 'package:rick_and_morthy_app_test/src/domain/providers/rick_morthy_providers.dart';
 import 'package:rick_and_morthy_app_test/src/presentation/widgets/loading_widget.dart';
 
@@ -14,8 +14,8 @@ class CharactersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Characters")),
-      body: _BodyCharacters(),
+      appBar: AppBar(title: const Text("Characters")),
+      body: const _BodyCharacters(),
     );
   }
 }
@@ -60,39 +60,44 @@ class CharacterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.5,
-      child: Stack(children: [
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Image(
-            image: NetworkImage(
-              characterModel.image,
-            ),
-            fit: BoxFit.fill,
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.1,
-            color: Colors.black.withOpacity(0.5),
-            child: Column(
-              children: [
-                Text(characterModel.name,
-                    style: TextStyle(fontSize: 24, color: Colors.white)),
-                Text(characterModel.status,
-                    style: TextStyle(fontSize: 20, color: Colors.white))
-              ],
+    return InkWell(
+      onTap: () {
+        context.pushNamed('detail_character', extra: characterModel);
+      },
+      child: Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height * 0.5,
+        child: Stack(children: [
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Image(
+              image: NetworkImage(
+                characterModel.image,
+              ),
+              fit: BoxFit.fill,
             ),
           ),
-        )
-      ]),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.1,
+              color: Colors.black.withOpacity(0.5),
+              child: Column(
+                children: [
+                  Text(characterModel.name,
+                      style: TextStyle(fontSize: 24, color: Colors.white)),
+                  Text(characterModel.status,
+                      style: TextStyle(fontSize: 20, color: Colors.white))
+                ],
+              ),
+            ),
+          )
+        ]),
+      ),
     );
   }
 }

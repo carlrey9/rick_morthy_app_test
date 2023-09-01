@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:rick_and_morthy_app_test/src/data/providers/rick_morthy_api_provider.dart';
-import 'package:rick_and_morthy_app_test/src/domain/models/character_model.dart';
-import 'package:rick_and_morthy_app_test/src/domain/models/episode_model.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/episode/episode_model.dart';
 import 'package:rick_and_morthy_app_test/src/domain/providers/rick_morthy_providers.dart';
 import 'package:rick_and_morthy_app_test/src/presentation/widgets/loading_widget.dart';
 

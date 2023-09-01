@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rick_and_morthy_app_test/src/data/repositories/rick_morthy_api_repository.dart';
-import 'package:rick_and_morthy_app_test/src/domain/models/character_model.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/character/character_model.dart';
 
 class CharactersNotifier
     extends StateNotifier<AsyncValue<List<CharacterModel>>> {

@@ -1,27 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'episode_model.dart';
+part of 'location_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_EpisodeModel _$$_EpisodeModelFromJson(Map<String, dynamic> json) =>
-    _$_EpisodeModel(
+_$_LocationModel _$$_LocationModelFromJson(Map<String, dynamic> json) =>
+    _$_LocationModel(
       id: json['id'] as int,
       name: json['name'] as String,
-      air_date: json['air_date'] as String,
-      episode: json['episode'] as String,
+      type: json['type'] as String,
+      dimension: json['dimension'] as String,
       url: json['url'] as String,
+      residents:
+          (json['residents'] as List<dynamic>).map((e) => e as String).toList(),
       created: json['created'] as String,
     );
 
-Map<String, dynamic> _$$_EpisodeModelToJson(_$_EpisodeModel instance) =>
+Map<String, dynamic> _$$_LocationModelToJson(_$_LocationModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'air_date': instance.air_date,
-      'episode': instance.episode,
+      'type': instance.type,
+      'dimension': instance.dimension,
       'url': instance.url,
+      'residents': instance.residents,
       'created': instance.created,
     };

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'character_model.dart';
+part of 'location_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,50 +14,46 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CharacterModel _$CharacterModelFromJson(Map<String, dynamic> json) {
-  return _CharacterModel.fromJson(json);
+LocationModel _$LocationModelFromJson(Map<String, dynamic> json) {
+  return _LocationModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CharacterModel {
+mixin _$LocationModel {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
-  String get species => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  String get gender => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  String get dimension => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
+  List<String> get residents => throw _privateConstructorUsedError;
   String get created => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CharacterModelCopyWith<CharacterModel> get copyWith =>
+  $LocationModelCopyWith<LocationModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CharacterModelCopyWith<$Res> {
-  factory $CharacterModelCopyWith(
-          CharacterModel value, $Res Function(CharacterModel) then) =
-      _$CharacterModelCopyWithImpl<$Res, CharacterModel>;
+abstract class $LocationModelCopyWith<$Res> {
+  factory $LocationModelCopyWith(
+          LocationModel value, $Res Function(LocationModel) then) =
+      _$LocationModelCopyWithImpl<$Res, LocationModel>;
   @useResult
   $Res call(
       {int id,
       String name,
-      String status,
-      String species,
       String type,
-      String gender,
-      String image,
+      String dimension,
       String url,
+      List<String> residents,
       String created});
 }
 
 /// @nodoc
-class _$CharacterModelCopyWithImpl<$Res, $Val extends CharacterModel>
-    implements $CharacterModelCopyWith<$Res> {
-  _$CharacterModelCopyWithImpl(this._value, this._then);
+class _$LocationModelCopyWithImpl<$Res, $Val extends LocationModel>
+    implements $LocationModelCopyWith<$Res> {
+  _$LocationModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -69,12 +65,10 @@ class _$CharacterModelCopyWithImpl<$Res, $Val extends CharacterModel>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? status = null,
-    Object? species = null,
     Object? type = null,
-    Object? gender = null,
-    Object? image = null,
+    Object? dimension = null,
     Object? url = null,
+    Object? residents = null,
     Object? created = null,
   }) {
     return _then(_value.copyWith(
@@ -86,30 +80,22 @@ class _$CharacterModelCopyWithImpl<$Res, $Val extends CharacterModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      species: null == species
-          ? _value.species
-          : species // ignore: cast_nullable_to_non_nullable
-              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      gender: null == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
+      dimension: null == dimension
+          ? _value.dimension
+          : dimension // ignore: cast_nullable_to_non_nullable
               as String,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      residents: null == residents
+          ? _value.residents
+          : residents // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       created: null == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
@@ -119,31 +105,29 @@ class _$CharacterModelCopyWithImpl<$Res, $Val extends CharacterModel>
 }
 
 /// @nodoc
-abstract class _$$_CharacterModelCopyWith<$Res>
-    implements $CharacterModelCopyWith<$Res> {
-  factory _$$_CharacterModelCopyWith(
-          _$_CharacterModel value, $Res Function(_$_CharacterModel) then) =
-      __$$_CharacterModelCopyWithImpl<$Res>;
+abstract class _$$_LocationModelCopyWith<$Res>
+    implements $LocationModelCopyWith<$Res> {
+  factory _$$_LocationModelCopyWith(
+          _$_LocationModel value, $Res Function(_$_LocationModel) then) =
+      __$$_LocationModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {int id,
       String name,
-      String status,
-      String species,
       String type,
-      String gender,
-      String image,
+      String dimension,
       String url,
+      List<String> residents,
       String created});
 }
 
 /// @nodoc
-class __$$_CharacterModelCopyWithImpl<$Res>
-    extends _$CharacterModelCopyWithImpl<$Res, _$_CharacterModel>
-    implements _$$_CharacterModelCopyWith<$Res> {
-  __$$_CharacterModelCopyWithImpl(
-      _$_CharacterModel _value, $Res Function(_$_CharacterModel) _then)
+class __$$_LocationModelCopyWithImpl<$Res>
+    extends _$LocationModelCopyWithImpl<$Res, _$_LocationModel>
+    implements _$$_LocationModelCopyWith<$Res> {
+  __$$_LocationModelCopyWithImpl(
+      _$_LocationModel _value, $Res Function(_$_LocationModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -151,15 +135,13 @@ class __$$_CharacterModelCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? status = null,
-    Object? species = null,
     Object? type = null,
-    Object? gender = null,
-    Object? image = null,
+    Object? dimension = null,
     Object? url = null,
+    Object? residents = null,
     Object? created = null,
   }) {
-    return _then(_$_CharacterModel(
+    return _then(_$_LocationModel(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -168,30 +150,22 @@ class __$$_CharacterModelCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as String,
-      species: null == species
-          ? _value.species
-          : species // ignore: cast_nullable_to_non_nullable
-              as String,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      gender: null == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
+      dimension: null == dimension
+          ? _value.dimension
+          : dimension // ignore: cast_nullable_to_non_nullable
               as String,
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      residents: null == residents
+          ? _value._residents
+          : residents // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       created: null == created
           ? _value.created
           : created // ignore: cast_nullable_to_non_nullable
@@ -202,116 +176,110 @@ class __$$_CharacterModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CharacterModel implements _CharacterModel {
-  const _$_CharacterModel(
+class _$_LocationModel implements _LocationModel {
+  const _$_LocationModel(
       {required this.id,
       required this.name,
-      required this.status,
-      required this.species,
-      this.type = "",
-      required this.gender,
-      required this.image,
+      required this.type,
+      required this.dimension,
       required this.url,
-      required this.created});
+      required final List<String> residents,
+      required this.created})
+      : _residents = residents;
 
-  factory _$_CharacterModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CharacterModelFromJson(json);
+  factory _$_LocationModel.fromJson(Map<String, dynamic> json) =>
+      _$$_LocationModelFromJson(json);
 
   @override
   final int id;
   @override
   final String name;
   @override
-  final String status;
-  @override
-  final String species;
-  @override
-  @JsonKey()
   final String type;
   @override
-  final String gender;
-  @override
-  final String image;
+  final String dimension;
   @override
   final String url;
+  final List<String> _residents;
+  @override
+  List<String> get residents {
+    if (_residents is EqualUnmodifiableListView) return _residents;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_residents);
+  }
+
   @override
   final String created;
 
   @override
   String toString() {
-    return 'CharacterModel(id: $id, name: $name, status: $status, species: $species, type: $type, gender: $gender, image: $image, url: $url, created: $created)';
+    return 'LocationModel(id: $id, name: $name, type: $type, dimension: $dimension, url: $url, residents: $residents, created: $created)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CharacterModel &&
+            other is _$_LocationModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.species, species) || other.species == species) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.image, image) || other.image == image) &&
+            (identical(other.dimension, dimension) ||
+                other.dimension == dimension) &&
             (identical(other.url, url) || other.url == url) &&
+            const DeepCollectionEquality()
+                .equals(other._residents, _residents) &&
             (identical(other.created, created) || other.created == created));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, status, species, type,
-      gender, image, url, created);
+  int get hashCode => Object.hash(runtimeType, id, name, type, dimension, url,
+      const DeepCollectionEquality().hash(_residents), created);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CharacterModelCopyWith<_$_CharacterModel> get copyWith =>
-      __$$_CharacterModelCopyWithImpl<_$_CharacterModel>(this, _$identity);
+  _$$_LocationModelCopyWith<_$_LocationModel> get copyWith =>
+      __$$_LocationModelCopyWithImpl<_$_LocationModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CharacterModelToJson(
+    return _$$_LocationModelToJson(
       this,
     );
   }
 }
 
-abstract class _CharacterModel implements CharacterModel {
-  const factory _CharacterModel(
+abstract class _LocationModel implements LocationModel {
+  const factory _LocationModel(
       {required final int id,
       required final String name,
-      required final String status,
-      required final String species,
-      final String type,
-      required final String gender,
-      required final String image,
+      required final String type,
+      required final String dimension,
       required final String url,
-      required final String created}) = _$_CharacterModel;
+      required final List<String> residents,
+      required final String created}) = _$_LocationModel;
 
-  factory _CharacterModel.fromJson(Map<String, dynamic> json) =
-      _$_CharacterModel.fromJson;
+  factory _LocationModel.fromJson(Map<String, dynamic> json) =
+      _$_LocationModel.fromJson;
 
   @override
   int get id;
   @override
   String get name;
   @override
-  String get status;
-  @override
-  String get species;
-  @override
   String get type;
   @override
-  String get gender;
-  @override
-  String get image;
+  String get dimension;
   @override
   String get url;
+  @override
+  List<String> get residents;
   @override
   String get created;
   @override
   @JsonKey(ignore: true)
-  _$$_CharacterModelCopyWith<_$_CharacterModel> get copyWith =>
+  _$$_LocationModelCopyWith<_$_LocationModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

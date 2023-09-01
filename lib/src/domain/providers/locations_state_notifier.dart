@@ -1,8 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rick_and_morthy_app_test/src/data/repositories/rick_morthy_api_repository.dart';
-import 'package:rick_and_morthy_app_test/src/domain/models/character_model.dart';
-import 'package:rick_and_morthy_app_test/src/domain/models/episode_model.dart';
-import 'package:rick_and_morthy_app_test/src/domain/models/location_model.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/location/location_model.dart';
 
 class LocationsNotifier extends StateNotifier<AsyncValue<List<LocationModel>>> {
   LocationsNotifier(this.rickMorthyRepository) : super(const AsyncLoading()) {

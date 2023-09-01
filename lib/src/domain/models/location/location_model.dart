@@ -11,6 +11,7 @@ class LocationModel with _$LocationModel {
       required String type,
       required String dimension,
       required String url,
+      required List<String> residents,
       required String created}) = _LocationModel;
 
   factory LocationModel.fromJson(Map<String, dynamic> json) =>

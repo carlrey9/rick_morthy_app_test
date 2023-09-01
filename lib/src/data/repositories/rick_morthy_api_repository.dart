@@ -1,10 +1,7 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:rick_and_morthy_app_test/src/domain/models/character_model.dart';
-import 'package:rick_and_morthy_app_test/src/domain/models/episode_model.dart';
-import 'package:rick_and_morthy_app_test/src/domain/models/location_model.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/character/character_model.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/episode/episode_model.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/location/location_model.dart';
 
 abstract class RickMorthyRepository {
   Future<List<CharacterModel>> getCharacters();
