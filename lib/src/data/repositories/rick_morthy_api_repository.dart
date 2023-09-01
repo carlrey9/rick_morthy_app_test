@@ -2,9 +2,12 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/character_model.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/episode_model.dart';
+import 'package:rick_and_morthy_app_test/src/domain/models/location_model.dart';
 
 abstract class RickMorthyRepository {
-  Future<String> getCharacters();
+  Future<List<CharacterModel>> getCharacters();
   Future<dynamic> getEpisodes();
   Future<dynamic> getLocations();
 }
@@ -16,50 +19,61 @@ class RickMorthyRepositoryImpl extends RickMorthyRepository {
   final endPointLocations = 'https://rickandmortyapi.com/api/location';
 
   @override
-  Future<String> getCharacters() async {
+  Future<List<CharacterModel>> getCharacters() async {
     try {
-      final result = await dio.get(endPointCharacters);
+      final response = await dio.get(endPointCharacters);
 
-      if (result.statusCode == 200) {
-        // print(result.data);
-        log("okas");
-        final parsedJson = jsonDecode(result.data);
-        log(parsedJson['results']);
+      if (response.statusCode == 200) {
+        final List<dynamic> results = response.data['results'].toList();
 
-        return result.data.toString();
+        List<CharacterModel> characters = [];
+        for (int i = 0; i < results.length; i++) {
+          characters.add(CharacterModel.fromJson(results[i]));
+        }
+        return characters;
       } else {
-        throw Exception();
+        return Future.error("Error getting data");
       }
     } catch (err) {
-      throw Future.error(err);
+      return Future.error(err);
     }
   }
 
   @override
   Future getEpisodes() async {
     try {
-      final result = await dio.get(endPointEpisodes);
-      if (result.statusCode == 200) {
-        print(result.data);
+      final response = await dio.get(endPointEpisodes);
+      if (response.statusCode == 200) {
+        final List<dynamic> results = response.data['results'].toList();
+        List<EpisodeModel> episodes = [];
+        for (int i = 0; i < results.length; i++) {
+          episodes.add(EpisodeModel.fromJson(results[i]));
+        }
+        return episodes;
       } else {
-        throw Exception();
+        return Future.error("Error getting data");
       }
     } catch (err) {
-      throw Exception();
+      return Future.error(err);
     }
   }
 
   @override
   Future getLocations() async {
     try {
-      final result = await dio.get(endPointLocations);
-      if (result.statusCode == 200) {
-        print(result.data);
+      final response = await dio.get(endPointLocations);
+      if (response.statusCode == 200) {
+        final List<dynamic> results = response.data['results'].toList();
+        List<LocationModel> locations = [];
+        for (int i = 0; i < results.length; i++) {
+          locations.add(LocationModel.fromJson(results[i]));
+        }
+        return locations;
       } else {
-        throw Exception();
+        return Future.error("Error getting data");
       }
     } catch (err) {
-      throw Exception();
+      return Future.error(err);
     }
   }
 }

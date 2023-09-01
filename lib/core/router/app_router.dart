@@ -22,7 +22,7 @@ GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/characters',
-      builder: (context, state) => const CharactersPage(),
+      builder: (context, state) => CharactersPage(),
       name: "characters",
     ),
     GoRoute(
