@@ -112,21 +112,37 @@ class OptionMenuW extends StatelessWidget {
       },
       child: Stack(
         children: [
-          Image(
-            image: AssetImage(image),
-            fit: BoxFit.fitHeight,
-            height: double.infinity,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image(
+              image: AssetImage(image),
+              fit: BoxFit.fitHeight,
+              height: double.infinity,
+            ),
           ),
           Container(
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
             child: Center(
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontSize: 34,
-                  fontWeight: FontWeight.bold,
+              child: Stack(children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 34,
+                    fontWeight: FontWeight.bold,
+                    foreground: Paint()
+                      ..style = PaintingStyle.stroke
+                      ..strokeWidth = 2
+                      ..color = Colors.white,
+                  ),
                 ),
-              ),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 34,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ]),
             ),
           ),
         ],
