@@ -18,52 +18,62 @@ class _DetailEpisodePageState extends State<DetailEpisodePage> {
     return Scaffold(
       appBar: AppBar(title: Text(widget.episodeModel.name)),
       body: Container(
-          child: Column(
-        children: [
-          SquareInfoWidget(
-              title: "Episode", content: widget.episodeModel.episode),
-          SquareInfoWidget(
-              title: "Created", content: widget.episodeModel.created),
-          SquareInfoWidget(
-              title: "Air date", content: widget.episodeModel.air_date),
-          Container(
-            margin: EdgeInsets.all(10),
-            height: 300,
-            child: GridView.builder(
-              itemCount: widget.episodeModel.characters.length,
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: Colors.green,
-                      ),
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Center(
-                      child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.network(
-                      _getUrlImage(widget.episodeModel.characters[index]),
-                      errorBuilder: (context, error, stackTrace) {
-                        return InkWell(
-                            onTap: () {
-                              setState(() {});
-                            },
-                            child: Icon(Icons.wifi_off_rounded));
-                      },
-                      loadingBuilder: (context, child, loadingProgress) {
-                        return loadingProgress == null
-                            ? child
-                            : Center(child: LoadingWidget());
-                      },
-                    ),
-                  )),
-                );
-              },
+          child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SquareInfoWidget(
+                title: "Episode", content: widget.episodeModel.episode),
+            SquareInfoWidget(
+                title: "Created", content: widget.episodeModel.created),
+            SquareInfoWidget(
+                title: "Air date", content: widget.episodeModel.air_date),
+            Divider(),
+            Container(
+              margin: EdgeInsets.all(10),
+              width: double.infinity,
+              child: Text("Characters in the episode",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
-          ),
-        ],
+            Container(
+              margin: EdgeInsets.all(10),
+              child: GridView.builder(
+                itemCount: widget.episodeModel.characters.length,
+                physics: ClampingScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4),
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: Colors.green,
+                        ),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Center(
+                        child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.network(
+                        _getUrlImage(widget.episodeModel.characters[index]),
+                        errorBuilder: (context, error, stackTrace) {
+                          return InkWell(
+                              onTap: () {
+                                setState(() {});
+                              },
+                              child: Icon(Icons.wifi_off_rounded));
+                        },
+                        loadingBuilder: (context, child, loadingProgress) {
+                          return loadingProgress == null
+                              ? child
+                              : Center(child: LoadingWidget());
+                        },
+                      ),
+                    )),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       )),
     );
   }
