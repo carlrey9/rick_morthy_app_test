@@ -44,7 +44,11 @@ class _BodyCharacters extends ConsumerWidget {
           },
         ));
       }),
-      error: (error, skt) => ErrWidget(error: error.toString()),
+      error: (error, skt) => ErrWidget(
+          error: error.toString(),
+          function: () {
+            ref.read(charactersProvider.notifier).getCharacters();
+          }),
       loading: () => Center(child: const LoadingWidget()),
     );
   }

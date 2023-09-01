@@ -43,7 +43,11 @@ class _BodyLocations extends ConsumerWidget {
           },
         ));
       }),
-      error: (error, skt) => ErrWidget(error: error.toString()),
+      error: (error, skt) => ErrWidget(
+          error: error.toString(),
+          function: () {
+            ref.read(locationsProvider.notifier).getLocations();
+          }),
       loading: () => Center(child: const LoadingWidget()),
     );
   }

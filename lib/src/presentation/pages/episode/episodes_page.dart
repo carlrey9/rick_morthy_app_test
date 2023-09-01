@@ -44,7 +44,11 @@ class _BodyEpisodes extends ConsumerWidget {
           },
         ));
       }),
-      error: (error, skt) => ErrWidget(error: error.toString()),
+      error: (error, skt) => ErrWidget(
+          error: error.toString(),
+          function: () {
+            ref.read(episodesProvider.notifier).getEpisodes();
+          }),
       loading: () => Center(child: const LoadingWidget()),
     );
   }
