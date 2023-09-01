@@ -3,17 +3,19 @@ import 'package:rick_and_morthy_app_test/src/domain/models/character/character_m
 import 'package:rick_and_morthy_app_test/src/domain/models/episode/episode_model.dart';
 import 'package:rick_and_morthy_app_test/src/domain/models/location/location_model.dart';
 
+final endPointCharacters = 'https://rickandmortyapi.com/api/character';
+final endPointEpisodes = 'https://rickandmortyapi.com/api/episode';
+final endPointLocations = 'https://rickandmortyapi.com/api/location';
+
 abstract class RickMorthyRepository {
   Future<List<CharacterModel>> getCharacters();
+  Future<CharacterModel> getOneCharacter(String url);
   Future<dynamic> getEpisodes();
   Future<dynamic> getLocations();
 }
 
 class RickMorthyRepositoryImpl extends RickMorthyRepository {
   final dio = Dio();
-  final endPointCharacters = 'https://rickandmortyapi.com/api/character';
-  final endPointEpisodes = 'https://rickandmortyapi.com/api/episode';
-  final endPointLocations = 'https://rickandmortyapi.com/api/location';
 
   @override
   Future<List<CharacterModel>> getCharacters() async {
@@ -66,6 +68,23 @@ class RickMorthyRepositoryImpl extends RickMorthyRepository {
           locations.add(LocationModel.fromJson(results[i]));
         }
         return locations;
+      } else {
+        return Future.error("Error getting data");
+      }
+    } catch (err) {
+      return Future.error(err);
+    }
+  }
+
+  @override
+  Future<CharacterModel> getOneCharacter(String url) async {
+    try {
+      final response = await dio.get(url);
+
+      if (response.statusCode == 200) {
+        final result = response.data;
+        CharacterModel character = CharacterModel.fromJson(result);
+        return character;
       } else {
         return Future.error("Error getting data");
       }
