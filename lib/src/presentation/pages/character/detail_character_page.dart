@@ -5,7 +5,12 @@ import 'package:rick_and_morthy_app_test/src/presentation/widgets/square_info_wi
 
 class DetailCharacterPage extends StatelessWidget {
   CharacterModel characterModel;
-  DetailCharacterPage({required this.characterModel, super.key});
+  int id;
+  DetailCharacterPage({
+    required this.characterModel,
+    required this.id,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

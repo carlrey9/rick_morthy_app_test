@@ -66,7 +66,9 @@ class EpisodeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.pushNamed('detail_episodes', extra: episodeModel);
+        context.goNamed('detail_episodes',
+            extra: episodeModel,
+            pathParameters: {'id': episodeModel.id.toString()});
       },
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),

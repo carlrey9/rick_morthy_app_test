@@ -7,7 +7,12 @@ import '../../widgets/loading_widget.dart';
 
 class DetailLocationPage extends StatelessWidget {
   LocationModel locationModel;
-  DetailLocationPage({required this.locationModel, super.key});
+  int id;
+  DetailLocationPage({
+    required this.locationModel,
+    required this.id,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

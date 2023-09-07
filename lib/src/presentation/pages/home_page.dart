@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Center(
+          title: const Center(
             child: Text(
               "Rick & Morthy App",
               textAlign: TextAlign.center,
@@ -30,19 +30,19 @@ class HomePage extends StatelessWidget {
               OptionMenuW(
                 color: Colors.red,
                 title: "Characters",
-                route: '/characters',
+                route: 'characters',
                 image: "assets/images/characters.jpg",
               ),
               OptionMenuW(
                 color: Colors.green,
                 title: "Episodes",
-                route: '/episodes',
+                route: 'episodes',
                 image: "assets/images/episodes.jpg",
               ),
               OptionMenuW(
                 color: Colors.blue,
                 title: "Locations",
-                route: '/locations',
+                route: 'locations',
                 image: "assets/images/locations.jpg",
               ),
             ],
@@ -107,7 +107,7 @@ class OptionMenuW extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (route != null) {
-          context.push(route!);
+          context.goNamed(route!);
         }
       },
       child: Stack(

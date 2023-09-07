@@ -6,7 +6,12 @@ import 'package:rick_and_morthy_app_test/src/presentation/widgets/square_info_wi
 
 class DetailEpisodePage extends StatefulWidget {
   EpisodeModel episodeModel;
-  DetailEpisodePage({required this.episodeModel, super.key});
+  int id;
+  DetailEpisodePage({
+    required this.episodeModel,
+    required this.id,
+    super.key,
+  });
 
   @override
   State<DetailEpisodePage> createState() => _DetailEpisodePageState();

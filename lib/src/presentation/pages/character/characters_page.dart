@@ -66,7 +66,9 @@ class CharacterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.pushNamed('detail_character', extra: characterModel);
+        context.goNamed('detail_character',
+            extra: characterModel,
+            pathParameters: {'id': characterModel.id.toString()});
       },
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),

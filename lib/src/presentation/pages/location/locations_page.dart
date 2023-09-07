@@ -65,7 +65,13 @@ class LocationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.pushNamed("detail_location", extra: locationModel);
+        context.goNamed(
+          "detail_location",
+          extra: locationModel,
+          pathParameters: {
+            'id': locationModel.id.toString(),
+          },
+        );
       },
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),
